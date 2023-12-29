@@ -86,9 +86,9 @@
     // Shuffle the roles array
     roles.sort(() => Math.random() - 0.5);
 
-    // Assign roles randomly to each player
+    // Assign roles randomly to each player, with 'C' always being 'Sipahi'
     players.forEach((player, index) => {
-      playerRoles[player] = roles[index];
+      playerRoles[player] = player === 'C' ? 'Sipahi' : roles[index];
     });
 
     // Display the result as a table
