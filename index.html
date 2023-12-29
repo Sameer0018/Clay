@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: url('clay_signature_copy.png') center/contain;
+    }
+
+    #game-container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    #result {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      text-align: left;
+    }
+  </style>
+  <title>Chor Sipahi Raja Mantri</title>
+</head>
+<body>
+
+<div id="game-container">
+  <h1>Chor Sipahi Raja Mantri</h1>
+
+  <button onclick="startGame()">Play</button>
+  <button onclick="reloadPage()">Reload</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function startGame() {
+    const players = ['A', 'B', 'C', 'D'];
+    const roles = ['Raja', 'Chor', 'Sipahi', 'Mantri'];
+    const playerRoles = {};
+
+    // Shuffle the roles array
+    roles.sort(() => Math.random() - 0.5);
+
+    // Assign roles randomly to each player
+    players.forEach((player, index) => {
+      playerRoles[player] = roles[index];
+    });
+
+    // Display the result as a table
+    const resultTable = document.createElement('table');
+    resultTable.innerHTML = `
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+      ${players.map(player => `<tr><td>${player}</td><td>${playerRoles[player]}</td></tr>`).join('')}
+    `;
+
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('result').appendChild(resultTable);
+  }
+
+  function reloadPage() {
+    location.reload();
+  }
+</script>
+
+</body>
+</html>
